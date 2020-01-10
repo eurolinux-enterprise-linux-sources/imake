@@ -1,7 +1,7 @@
 Summary: imake source code configuration and build system
 Name: imake
 Version: 1.0.5
-Release: 10%{?dist}
+Release: 7%{?dist}
 License: MIT
 Group: User Interface/X
 URL: http://www.x.org
@@ -13,8 +13,6 @@ Source3: ftp://ftp.x.org/pub/individual/util/xorg-cf-files-1.0.4.tar.bz2
 Source4: ftp://ftp.x.org/pub/individual/util/lndir-1.0.3.tar.bz2
 Patch2: xorg-cf-files-1.0.2-redhat.patch
 Patch11: imake-1.0.2-abort.patch
-Patch20: imake-add-aarch64.patch
-Patch21: imake-1.0.2-aarch64-fixup.patch
 
 BuildRequires: pkgconfig
 BuildRequires: xorg-x11-util-macros
@@ -39,10 +37,6 @@ migrate software to the GNU autotools system.
 # imake patches
 pushd %{name}-%{version}
 %patch11 -p1 -b .abort
-popd
-pushd xorg-cf-files-1.0.4
-%patch20 -p1
-%patch21 -p1
 popd
 
 %build
@@ -120,15 +114,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/xmkmf.1*
 
 %changelog
-* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 1.0.5-10
-- Mass rebuild 2014-01-24
-
-* Thu Jan 23 2014 Dave Airlie <airlied@redhat.com> 1.0.5-9
-- add aarch64 support (#1041342)
-
-* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 1.0.5-8
-- Mass rebuild 2013-12-27
-
 * Thu Feb 07 2013 Jon Ciesla <limburgher@gmail.com> 1.0.5-7
 - Merge review fixes, BZ 225898.
 
